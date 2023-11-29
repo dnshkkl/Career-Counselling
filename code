@@ -1,0 +1,112 @@
+# Import necessary libraries for AI recommendation
+import random
+
+# Initialize dictionaries to store course details and fees in INR.
+course_details = {}
+course_fees = {}
+
+# Function to add course details.
+def add_course(course_name, details, fees_inr):
+    course_details[course_name] = details
+    course_fees[course_name] = fees_inr
+
+# Function to suggest courses based on the user's budget and selected field.
+def suggest_courses(user_budget, user_interest):
+    suggested_courses = []
+    for course_name, course_fee in course_fees.items():
+        if course_fee >= user_budget and user_interest.lower() in course_name.lower():
+            suggested_courses.append((course_name, course_fee))
+    return suggested_courses
+
+# Adding course details and fees (in INR).
+
+# IT and Software
+add_course("Artificial Intelligence (AI) and Machine Learning (ML)", "Master AI and ML concepts and applications", 25000)
+add_course("Data Science", "Analyze and visualize data with Python", 15000)
+add_course("Cybersecurity", "Learn cybersecurity techniques and practices", 18000)
+add_course("Cloud Computing", "Explore cloud technologies like AWS and Azure", 20000)
+add_course("Full-Stack Development", "Become a full-stack web developer", 18000)
+add_course("Mobile App Development", "Create mobile apps for Android and iOS", 16000)
+add_course("DevOps", "Learn DevOps practices and tools", 17000)
+add_course("Software Testing", "Master software testing techniques", 14000)
+add_course("IT Project Management", "Manage IT projects effectively", 16000)
+add_course("Business Intelligence (BI) and Data Analytics", "Analyze business data for insights", 19000)
+
+# Business and Management
+add_course("Digital Marketing", "Master online marketing and advertising", 12000)
+add_course("Business Analytics", "Analyze business data for decision-making", 16000)
+add_course("Financial Modelling and Analysis", "Model financial data and perform analysis", 17000)
+add_course("Human Resource Management (HRM)", "Manage human resources in organizations", 14000)
+add_course("Marketing Management", "Master marketing strategies and concepts", 15000)
+add_course("Supply Chain Management", "Optimize supply chain operations", 17000)
+add_course("Operations Management", "Manage business operations efficiently", 16000)
+add_course("Entrepreneurship and Startup Management", "Start and grow your own business", 20000)
+add_course("Business English and Communication", "Improve business communication skills", 12000)
+add_course("Business Process Management (BPM)", "Optimize business processes", 18000)
+
+# Design and Creative
+add_course("Graphic Design", "Create visually appealing graphics", 10000)
+add_course("Web Design and Development", "Design and develop websites", 11000)
+add_course("User Experience (UX) Design", "Design user-friendly experiences", 12000)
+add_course("User Interface (UI) Design", "Create intuitive user interfaces", 11000)
+add_course("Digital Illustration", "Create digital illustrations and artwork", 9000)
+add_course("Animation and Motion Graphics", "Create animations and motion graphics", 11000)
+add_course("Video Editing and Production", "Edit and produce videos", 12000)
+add_course("Photography", "Learn photography and editing skills", 10000)
+add_course("Creative Writing", "Improve your creative writing skills", 8000)
+add_course("Interior Design", "Design interior spaces", 13000)
+
+# Healthcare and Life Sciences
+add_course("Nursing (Medicine)", "Study nursing and patient care", 17000)
+add_course("Pharmacy (Medicine)", "Learn about pharmaceuticals and medications", 15000)
+add_course("Physiotherapy (Medicine)", "Provide physiotherapy and rehabilitation", 16000)
+add_course("Medical Lab Technician (Medicine)", "Become a medical lab technician", 14000)
+add_course("Dental Hygienist (Medicine)", "Learn dental hygiene practices", 12000)
+add_course("Biotechnology (Medicine)", "Explore biotechnology and genetics", 18000)
+add_course("Public Health (Medicine)", "Study public health and disease prevention", 16000)
+add_course("Nutrition and Dietetics (Medicine)", "Learn about nutrition and diet planning", 14000)
+add_course("Occupational Therapy (Medicine)", "Provide occupational therapy services", 17000)
+add_course("Speech-Language Pathology (Medicine)", "Study speech and language disorders", 15000)
+
+# Engineering
+add_course("Computer Science Engineering", "Study computer science and engineering", 18000)
+add_course("Electrical Engineering", "Learn electrical engineering principles", 16000)
+add_course("Mechanical Engineering", "Explore mechanical engineering concepts", 17000)
+add_course("Civil Engineering", "Fundamentals of civil engineering", 15000)
+add_course("Electronics and Communication Engineering", "Study electronics and communication", 18000)
+add_course("Chemical Engineering", "Learn chemical engineering principles", 16000)
+add_course("Aerospace Engineering", "Explore aerospace engineering concepts", 17000)
+add_course("Biotechnology Engineering", "Study biotechnology and genetics", 15000)
+add_course("Production Engineering", "Learn production and manufacturing", 16000)
+add_course("Petroleum Engineering", "Study petroleum engineering and oil industry", 18000)
+
+# Others
+add_course("Law", "Study law and legal studies", 20000)
+add_course("Teaching", "Become a teacher and educate others", 12000)
+add_course("Hospitality and Tourism", "Explore the hospitality and tourism industry", 14000)
+add_course("Journalism and Mass Communication", "Study journalism and communication", 13000)
+add_course("Fashion Design", "Learn fashion design and clothing", 16000)
+add_course("Animation and VFX", "Create animations and visual effects", 14000)
+add_course("Hotel Management", "Manage hotels and hospitality businesses", 15000)
+add_course("Aviation Management", "Explore aviation and airport management", 16000)
+add_course("Event Management", "Plan and manage events and conferences", 12000)
+add_course("Retail Management", "Manage retail stores and operations", 14000)
+
+# User input to select a field of interest.
+user_interest = input("Enter your field of interest (e.g., Engineering, Law, design etc.): ")
+
+# User input to enter their budget in INR.
+user_budget_inr = int(input("What is your budget (in INR)? "))
+
+# Suggest courses based on the user's budget and field of interest.
+recommended_courses = suggest_courses(user_budget_inr, user_interest)
+
+# Display suggested courses (in INR) that fit within the user's budget.
+if recommended_courses:
+    print("Suggested courses within your budget for", user_interest)
+    for course_name, course_fee_inr in recommended_courses:
+        print(f"Course: {course_name}")
+        print(f"Details: {course_details[course_name]}")
+        print(f"Course Fee: ₹{course_fee_inr} INR")
+else:
+    print("No courses available within your budget for", user_interest)
